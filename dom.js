@@ -14,3 +14,8 @@ for(i=0; i< item.length; i++){
 
 }
 
+
+var items = document.getElementsByClassName('list-group-item2');
+items[0].style.fontWeight = 'bold';
+items[0].style.backgroundColor = 'red';
+
