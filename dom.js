@@ -19,3 +19,18 @@ var items = document.getElementsByClassName('list-group-item2');
 items[0].style.fontWeight = 'bold';
 items[0].style.backgroundColor = 'red';
 
+item[1].style.backgroundColor = 'green';
+
+// Make the 3rd item invisible
+item[2].style.display = 'none';
+
+// Using QuerySelectorAll, change the font color to green for the 2nd item in the item list
+var secondItem = document.querySelectorAll('#items .list-group-item')[1];
+secondItem.style.color = 'green';
+
+// Choose all the odd elements and make their background green using QuerySelectorAll
+var oddItems = document.querySelectorAll('#items .list-group-item:nth-child(odd)');
+for (var i = 0; i < oddItems.length; i++) {
+    oddItems[i].style.backgroundColor = 'green';
+}
+
