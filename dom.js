@@ -34,3 +34,33 @@ for (var i = 0; i < oddItems.length; i++) {
     oddItems[i].style.backgroundColor = 'green';
 }
 
+
+var newDiv = document.createElement('div');
+
+newDiv.className = 'hello';
+
+newDiv.id = 'hello1';
+
+newDiv.setAttribute('title', 'Hello Div');
+
+var newDivText = document.createTextNode('Hello World');
+
+newDiv.appendChild(newDivText);
+
+var container = document.querySelector('header .container');
+var h1 = document.querySelector('header h1');
+
+container.insertBefore(newDiv, h1)
+
+
+
+
+var itemList = document.querySelector('#items');
+
+
+var newItem = document.createElement('li');
+
+
+newItem.textContent = 'New Item';
+
+itemList.insertBefore(newItem, itemList.firstChild);
