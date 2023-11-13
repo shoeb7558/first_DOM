@@ -131,4 +131,46 @@ function removeItem(e){
   }
 }
 
+// Filter Items
+function filterItems(e){
+  // convert text to lowercase
+  var text = e.target.value.toLowerCase();
+  // Get lis
+  var items = itemList.getElementsByTagName('li');
+  // Convert to an array
+  Array.from(items).forEach(function(item){
+    var itemName = item.firstChild.textContent;
+    if(itemName.toLowerCase().indexOf(text) != -1){
+      item.style.display = 'block';
+      
+    } else {
+      item.style.display = 'none';
+      
+    }
+  });
+}
+// Filter Items
+function filterItems(e) {
+    // convert text to lowercase
+    var text = e.target.value.toLowerCase();
+    // Get lis
+    var items = itemList.getElementsByTagName('li');
+    // Convert to an array
+    Array.from(items).forEach(function (item1) {
+      var itemName = item1.firstChild.textContent;
+      var itemDescription = item1.firstChild.nextSibling.textContent; // Get the item1 text
+      var combinedText = itemName + itemDescription;
+  
+      if (combinedText.toLowerCase().indexOf(text) != -1) {
+        item1.style.display = 'block';
+      } else {
+        item1.style.display = 'none';
+      }
+    });
+  }
+  
+
+
+
+
 
