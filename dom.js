@@ -126,6 +126,18 @@ function removeItem(e){
   if(e.target.classList.contains('delete')){
     if(confirm('Are You Sure?')){
       var li = e.target.parentElement;
+       var items = document.getElementById('items');
+      
+
+      // Get the index of the item being removed
+      var index = Array.from(items.children).indexOf(li);
+
+      // Remove the item from local storage
+      var existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+      existingUsers.splice(index, 1);
+
+      // Update local storage with the modified array
+      localStorage.setItem('users', JSON.stringify(existingUsers));
       itemList.removeChild(li);
     }
   }
