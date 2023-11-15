@@ -23,13 +23,20 @@
     </form>
     <h2 class="title">Items</h2>
     <ul id="items" class="list-group">
-      <li class="list-group-item">Item 1 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-info btn-sm float-right edit">Edit</button></li>
-      <li class="list-group-item">Item 2 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-info btn-sm float-right edit">Edit</button></li>
-      <li class="list-group-item">Item 3 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-info btn-sm float-right edit">Edit</button></li>
-      <li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-info btn-sm float-right edit">Edit</button></li>
+     <li class="list-group-item" id="item1">Item 1 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-info btn-sm float-right edit" onclick="editItem('item1')">Edit</button></li>
     </ul>
    </div>
   </div>
   <script src="dom.js"></script>
+  <script>
+    function editItem(itemId) {
+      var itemText = document.getElementById(itemId).textContent.trim();
+      var newItemText = prompt("Edit item:", itemText);
+      
+      if (newItemText !== null) {
+        document.getElementById(itemId).textContent = newItemText;
+      }
+    }
+  </script>
 </body>
 </html>
