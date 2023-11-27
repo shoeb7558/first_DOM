@@ -82,13 +82,17 @@ function addItem(e){
 
   // Get input value
   var newItem = document.getElementById('item').value;
+  var newItem1 = document.getElementById('email').value;
+    
 
   // Create new li element
   var li = document.createElement('li');
+    
   // Add class
   li.className = 'list-group-item';
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem));
+   li.appendChild(document.createTextNode(newItem1));
 
   // Create del button element
   var deleteBtn = document.createElement('button');
@@ -119,6 +123,11 @@ function addItem(e){
 
   // Append li to list
   itemList.appendChild(li);
+  addToLocalStorage(newItem, newItem1);
+  addToLocalStorageAndCrudCrud(newItem, newItem1);
+
+  // Reset the form
+  form.reset();
 }
 
 // Remove item
@@ -178,6 +187,41 @@ function filterItems(e) {
       } else {
         item1.style.display = 'none';
       }
+    });
+  }
+
+  
+function addToLocalStorage(name, email) {
+    const user = {
+      name: name,
+      email: email
+    };
+  
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+    existingUsers.push(user);
+    localStorage.setItem('users', JSON.stringify(existingUsers));
+  }
+
+  
+
+  function addToLocalStorageAndCrudCrud(name, email) {
+    const user = {
+      name: name,
+      email: email
+    };
+  
+    // Add item to local storage
+    
+  
+
+      // Save data to CRUD CRUD API using Axios
+     // const apiUrl = 'https://crudcrud.com/api/c76077076e374296a4538a2665e87c35/your-collection'; // Replace 'your-collection' with your actual collection ID
+    axios.post("https://crudcrud.com/api/c76077076e374296a4538a2665e87c35/uniqueitemlist", user)
+    .then((response) => {
+      console.log('Data saved to CRUD CRUD API successfully.');
+    })
+     .catch((err) => {
+      console.log('error');
     });
   }
   
