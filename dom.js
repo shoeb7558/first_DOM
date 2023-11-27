@@ -128,5 +128,25 @@
         console.log('Error fetching data from CRUD CRUD API:', error);
       });
   }
+
+  function deleteItem(itemId) {
+      if (confirm('Are you sure you want to delete this item?')) {
+        // Get the item text for deletion
+        var itemText = document.getElementById(itemId).textContent.trim();
+        
+        // Send a request to delete the item from the server
+        axios.delete("https://crudcrud.com/api/8ce90492c21a452688f87ff01e5b0db8/uniqueitemlist/" + itemId)
+          .then((response) => {
+            console.log('Item deleted successfully:', itemText);
+            // Fetch and render updated items after successful deletion
+            fetchAndRenderItems();
+          })
+          .catch((error) => {
+            console.log('Error deleting item:', error);
+          });
+      }
+    }
   fetchAndRenderItems()
+
+  
 });
