@@ -125,6 +125,7 @@ function addItem(e){
   itemList.appendChild(li);
   addToLocalStorage(newItem, newItem1);
   addToLocalStorageAndCrudCrud(newItem, newItem1);
+fetchAndRenderItems()
 
   // Reset the form
   form.reset();
@@ -224,7 +225,26 @@ function addToLocalStorage(name, email) {
       console.log('error');
     });
   }
-  
+
+ function fetchAndRenderItems() {
+    axios.get("https://crudcrud.com/api/6b4ef31f91ec4d6d81148e63c5cd79e6/uniqueitemlist")
+      .then((response) => {
+        // Clear existing items
+        //itemList.innerHTML = '';
+        // Render items
+        for (var i = 0; i < response.data.length; i++) {
+          addItem(response.data[i]);
+        }
+      })
+      .catch((error) => {
+        console.log('Error fetching data from CRUD CRUD API:', error);
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+  // Fetch initial data when the page loads
+  fetchAndRenderItems();
+});
 
 
 
