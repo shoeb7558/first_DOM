@@ -31,6 +31,9 @@
     var editBtn = document.createElement('button');
     editBtn.className = 'btn btn-info btn-sm float-right edit';
     editBtn.appendChild(document.createTextNode('Edit'));
+    editBtn.addEventListener('click', function () {
+      editExpense(item); // Assuming 'item' is the expense data you want to edit
+    });
     li.appendChild(editBtn);
 
     itemList.appendChild(li);
@@ -42,6 +45,22 @@
     // Reset the form
     form.reset();
   }
+  function editExpense(li) {
+    var newItem = document.getElementById('item').value;
+    var newItem1 = document.getElementById('email').value;
+
+    var newAmount = prompt('Enter new Name:', newItem.innerText);
+    var newDescription = prompt('Enter new description:', newItem1.innerText);
+    
+
+    if (newAmount !== null && newDescription !== null) {
+      newItem.innerText = newAmount;
+      newItem1.innerText = newDescription;
+      
+    }
+    addToLocalStorageAndCrudCrud(newItem, newItem1);
+  }
+  
 
   function removeItem(e) {
     if (e.target.classList.contains('delete')) {
